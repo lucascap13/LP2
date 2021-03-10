@@ -1,0 +1,6 @@
+    void drag(int dx, int dy)
+    {
+        this.x = this.x + dx;
+        this.y = this.y + dy;
+        System.out.format("A nova posicao do retangulo é: (%d, %d) \n", this.x, this.y);
+    }
