@@ -1,1 +1,4 @@
-
+    int area()     //Metodo para calcular e retornar a area
+    {
+        return this.w * this.h;
+    }
