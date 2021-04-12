@@ -1,4 +1,4 @@
-//A parte nova é a partir da linha 11, onde desenho retangulo ao redor da figura focada.
+//A parte nova é a partir da linha 11, onde desenho retangulo ao redor da figura focada e faço a parte do Z-order.
 public void paint(Graphics g)
     {
         super.paint(g);
