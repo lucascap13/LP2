@@ -34,8 +34,8 @@ public void paint(Graphics g)
         }
         
         tituloTintas.paint(g);   //String "Tintas" em cima dos botoes
-        dica1.paint(g);
-        dica2.paint(g);
+        dica1.paint(g);          //Explica como alterar cor do fundo
+        dica2.paint(g);          //Explica como alterar cor do contorno/fonte
 
         for (Figure fig: this.figs)
         {
