@@ -1,4 +1,5 @@
-Dentro do ouvinte de teclado...
+//Dentro do ouvinte de teclado...
+
                    //              ~~~~ Exibe/Oculta dicas ~~~~
                     else if (evt.getKeyCode() == 113)
                     {
