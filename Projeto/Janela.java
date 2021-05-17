@@ -70,9 +70,11 @@ public class Janela extends JPanel
                 {
                     Point mousePos = new Point(getMousePosition());
                     //              ~~~~ Verificar se é texto para mover de forma especifica ~~~~
-                    if(focus.getClass().equals(Texto.class))
+                    if(focus.clicked(mousePos.x, mousePos.y))
                     {
-                        focus.movTexto(mousePos.x, mousePos.y);
+                        focus.MoverMouse(mousePos.x - clickX, mousePos.y - clickY);
+                        clickX = mousePos.x;
+                        clickY = mousePos.y;
                         repaint();
                     }
                     //              ~~~~ Redimensionar pela ponta superior direita ~~~~
@@ -85,14 +87,6 @@ public class Janela extends JPanel
                     else if(mousePos.x <= (focus.x+6) && mousePos.y >= (focus.y+focus.h)-6)
                     {
                         focus.RedimensionarInfEsq(mousePos.x, mousePos.y);
-                        repaint();
-                    }
-                    //              ~~~~ Mover figura ~~~~
-                    else if (mousePos.x >= focus.x && mousePos.x < (focus.x + focus.w) && mousePos.y >= focus.y && mousePos.y <= (focus.y+focus.h))
-                    {
-                        focus.movMouse(mousePos.x - clickX, mousePos.y - clickY);
-                        clickX = mousePos.x;
-                        clickY = mousePos.y;
                         repaint();
                     }
                 }
