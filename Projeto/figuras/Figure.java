@@ -1,7 +1,8 @@
 package figuras;
 import java.awt.Graphics;
+import interfaces.iVisible;
 
-public abstract class Figure 
+public abstract class Figure implements iVisible
 {
     public int x;
     public int y;
@@ -22,22 +23,24 @@ public abstract class Figure
         this.h = h;
     }
     
+    //Metodos que tive que separar
     public abstract void paint(Graphics g);
+    public abstract boolean clicked(int x, int y);
+    public abstract void Focar(Graphics g);
 
+    //Metodos "Universais"
     public void changeContorno(int cor1, int cor2, int cor3)
     {
         this.r = cor1;
         this.g = cor2;
         this.b = cor3;
     }
-
     public void changeFundo(int cor1, int cor2, int cor3)
     {
         this.rf = cor1;
         this.gf = cor2;
         this.bf = cor3;
     }
-
     public void moverHori(int posX)
     {
         this.x = this.x + posX;
@@ -52,6 +55,7 @@ public abstract class Figure
         this.x += posX;
         this.y += posY;
     }
+
     public void movTexto(int posX, int posY)
     {
         this.x = posX;
@@ -91,6 +95,5 @@ public abstract class Figure
         {
             this.h = 3;
         }
-    }
-    
+    } 
 }
