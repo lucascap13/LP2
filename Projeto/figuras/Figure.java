@@ -50,17 +50,12 @@ public abstract class Figure implements iVisible
         this.y = this.y + posY;
     }
 
-    public void movMouse(int posX, int posY)
+    public void MoverMouse(int posX, int posY)
     {
         this.x += posX;
         this.y += posY;
     }
 
-    public void movTexto(int posX, int posY)
-    {
-        this.x = posX;
-        this.y = posY;
-    }
     public void RedimensionarSupDir(int posX, int posY)
     {
         this.h += (this.y - posY);
