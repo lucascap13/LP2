@@ -8,23 +8,37 @@ public class Texto extends Figure
     private int estilo;
     private int tamLetra;
 
-    public Texto(int x, int y, String cadeia, int estilo, int r, int g, int b, int w, int h, int tamLetra)
+    public Texto(int x, int y, String cadeia, int estilo, int r, int g, int b, int w, int h, int tamLetra, boolean focado)
     {
-        super(x, y, r, g, b, w, h);
+        super(x, y, r, g, b, w, h, focado);
         this.cadeia = cadeia;
         this.estilo = estilo;
         this.tamLetra = tamLetra;
     }
     
-    public void paint(Graphics g)
+    public void paint(Graphics g, boolean focado)
     {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(new Color(this.r, this.g, this.b));
-        g.setFont(new Font("FonteShow", estilo, tamLetra));
-        g2d.drawString(this.cadeia, this.x, this.y);
-        FontMetrics metrics = g.getFontMetrics();
-        this.h= metrics.getHeight();
-        this.w = metrics.stringWidth(cadeia);
+        if(focado)
+        {
+            g2d.setColor(new Color(this.r, this.g, this.b));
+            g.setFont(new Font("FonteShow", estilo, tamLetra));
+            g2d.drawString(this.cadeia, this.x, this.y);
+            FontMetrics metrics = g.getFontMetrics();
+            this.h= metrics.getHeight();
+            this.w = metrics.stringWidth(cadeia);
+            g2d.setColor(Color.red);
+            g2d.drawRect(this.x-2, this.y - 18, this.w+5, 25);
+        }
+        else
+        {
+            g2d.setColor(new Color(this.r, this.g, this.b));
+            g.setFont(new Font("FonteShow", estilo, tamLetra));
+            g2d.drawString(this.cadeia, this.x, this.y);
+            FontMetrics metrics = g.getFontMetrics();
+            this.h= metrics.getHeight();
+            this.w = metrics.stringWidth(cadeia);
+        }
     }
     
     public boolean clicked(int posX, int posY)
@@ -37,12 +51,5 @@ public class Texto extends Figure
         {
             return false;
         }
-    }
-
-    public void Focar (Graphics g)
-    {
-        Graphics2D gfd = (Graphics2D) g;
-        gfd.setColor(Color.red);
-        gfd.drawRect(this.x-2, this.y - 18, this.w+5, 25);
     }
 }
