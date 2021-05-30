@@ -1,5 +1,4 @@
 import javax.swing.*;
-
 class DesenhoApp
 {
     public static void main (String[] args)
