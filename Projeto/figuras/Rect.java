@@ -3,42 +3,33 @@ import java.awt.*;
 
 public class Rect extends Figure
 {
-    public Rect (int x, int y, int w, int h, int r, int g, int b, int rf, int gf, int bf)
+    public Rect (int x, int y, int w, int h, int r, int g, int b, int rf, int gf, int bf, boolean focado)
     {
-        super(x, y, r, g, b, w, h);
+        super(x, y, r, g, b, w, h,focado);
         this.rf = rf;
         this.gf = gf;
         this.bf = bf;
     }
 
-    public void paint (Graphics g)
+    public void paint (Graphics g, boolean focado)
     {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(new Color(rf, gf, bf));
-        g2d.fillRect(x, y, w, h);
-        g2d.setColor(new Color(this.r, this.g, this.b));
-        g2d.drawRect(this.x,this.y, this.w,this.h);
-    }
-    
-    public boolean clicked(int posX, int posY)
-    {
-        if((posX >= this.x && posX <= (this.w+this.x)) && (posY >= this.y && posY <= (this.y+this.h)))
+        if(focado)
         {
-            return true;
+            g2d.setColor(new Color(rf, gf, bf));
+            g2d.fillRect(x, y, w, h);
+            g2d.setColor(new Color(this.r, this.g, this.b));
+            g2d.drawRect(this.x,this.y, this.w,this.h);
+            g2d.setColor(Color.RED);
+            g2d.drawRect(this.x-2, this.y-2, this.w+4, this.h+4);
+            this.focar(g);
         }
         else
         {
-            return false;
+            g2d.setColor(new Color(rf, gf, bf));
+            g2d.fillRect(x, y, w, h);
+            g2d.setColor(new Color(this.r, this.g, this.b));
+            g2d.drawRect(this.x,this.y, this.w,this.h);
         }
-    }
-
-    public void Focar (Graphics g)
-    {
-        Graphics2D gfd = (Graphics2D) g;
-        gfd.setColor(Color.RED);
-        gfd.drawRect(this.x-2, this.y-2, this.w+4, this.h+4);
-        gfd.setColor(Color.CYAN);
-        gfd.fillOval(this.x+this.w-4,this.y-3,7,7);
-        gfd.fillOval(this.x-3,this.y+this.h-6,7,7);
     }
 }
